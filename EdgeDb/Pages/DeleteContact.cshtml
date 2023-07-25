@@ -1,0 +1,19 @@
+﻿@page "{id}"
+@model EdgeDb.Pages.DeleteContactModel
+@{
+    ViewData["Title"] = "Delete Contact";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="Contact.Id" />
+
+    <div>
+        <p>Are you sure you want to delete this contact?</p>
+        <p>@Model.Contact.FirstName @Model.Contact.LastName</p>
+    </div>
+
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-page="./Index">Cancel</a>
+</form>

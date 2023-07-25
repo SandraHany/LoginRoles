@@ -1,0 +1,85 @@
+﻿@page
+@model EdgeDb.Pages.AddContactModel
+
+<form method="post" class="m-3">
+    <h2>Add Contact</h2>
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="mb-3">
+        <label asp-for="ContactObject.FirstName" class="form-label"></label>
+        <input asp-for="ContactObject.FirstName" class="form-control" />
+        <span asp-validation-for="ContactObject.FirstName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ContactObject.LastName" class="form-label"></label>
+        <input asp-for="ContactObject.LastName" class="form-control" />
+        <span asp-validation-for="ContactObject.LastName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ContactObject.Email" class="form-label"></label>
+        <input asp-for="ContactObject.Email" class="form-control" />
+        <span asp-validation-for="ContactObject.Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ContactObject.Username" class="form-label"></label>
+        <input asp-for="ContactObject.Username" class="form-control" />
+        <span asp-validation-for="ContactObject.Username" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ContactObject.Password" class="form-label"></label>
+        <input asp-for="ContactObject.Password" type="password" class="form-control" />
+        <span asp-validation-for="ContactObject.Password" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ContactObject.Role" class="form-label">Role</label>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" asp-for="ContactObject.Role" value="Normal" />
+            <label class="form-check-label">Normal</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" asp-for="ContactObject.Role" value="Admin" />
+            <label class="form-check-label">Admin</label>
+        </div>
+        <span asp-validation-for="ContactObject.Role" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ContactObject.Title" class="form-label"></label>
+        @Html.DropDownListFor(
+        m => m.ContactObject.Title,
+        new SelectList(Enum.GetValues(typeof(TitleEnum))),
+        "Select Title",
+        new { @class = "form-control" }
+        )
+        <span asp-validation-for="ContactObject.Title" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ContactObject.Description" class="form-label"></label>
+        <input asp-for="ContactObject.Description" class="form-control" />
+        <span asp-validation-for="ContactObject.Description" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ContactObject.DateofBirth" class="form-label"></label>
+        <input asp-for="ContactObject.DateofBirth" class="form-control" type="date" />
+        <span asp-validation-for="ContactObject.DateofBirth" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ContactObject.IsMarried" class="form-label">Is Married?</label>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="radgroup" value="Yes" />
+            <label class="form-check-label">Yes</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="radgroup" value="No" />
+            <label class="form-check-label">No</label>
+        </div>
+        <span asp-validation-for="ContactObject.IsMarried" class="text-danger"></span>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Add Contact</button>
+</form>
+
+<style type="text/css">
+    .mb-3 {
+        margin-bottom: 1.5rem;
+    }
+</style>
